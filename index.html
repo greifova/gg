@@ -120,6 +120,7 @@
         }
 
         #win-popup{
+            display: none;
             text-align: center;
             position: fixed;
             top: 55%;
@@ -149,7 +150,7 @@
                 <canvas class="scratch-canvas" width="200" height="200"></canvas>
             </div>
             <h4>Vyhrávaš</h4>
-            <h3>Wellness večer v Holiday Inn</h3>
+            <h3>Poukaz na škrabkanie</h3>
 
         </div>
         <div class="base">
@@ -157,14 +158,14 @@
                 <canvas class="scratch-canvas" width="200" height="200"></canvas>
             </div>
             <h4>Vyhrávaš</h4>
-            <h3>Poukaz na škrabkanie</h3>
+            <h3>Wellness pre 2 osoby</h3>
         </div>
         <div class="base">
             <div class="scratch-card">
                 <canvas class="scratch-canvas" width="200" height="200"></canvas>
             </div>
             <h4>Vyhrávaš</h4>
-            <h3>Wellness večer v Holiday Inn</h3>
+            <h3>Wellness pre 2 osoby</h3>
         </div>
     </div>
 
@@ -174,35 +175,35 @@
     </div>
     <!-- Script -->
     <script>
-        const images = [
-            "img/IMG_4379.jpg", "img/IMG_4376.jpg", "img/IMG_4382.jpg",
-            "img/IMG_4386.jpg", "img/IMG_4393.jpg", "img/IMG_4396.jpg",
-            "img/IMG_4398.jpg"
-        ];
-        let currentImageIndex = 0;
-        const imageElement = document.getElementById('image');
+ const images = [
+    "img/IMG_4379.jpg", "img/IMG_4376.jpg", "img/IMG_4382.jpg",
+    "img/IMG_4386.jpg", "img/IMG_4393.jpg", "img/IMG_4396.jpg",
+    "img/IMG_4398.jpg"
+];
+let currentImageIndex = 0;
+const imageElement = document.getElementById('image');
 
-        const changeImage = () => {
-            currentImageIndex = (currentImageIndex + 1) % images.length;
-            const newImage = new Image();
-            newImage.src = images[currentImageIndex];
-            newImage.onload = () => {
-                imageElement.style.opacity = 0;
-                setTimeout(() => {
-                    imageElement.src = newImage.src;
-                    imageElement.style.opacity = 1;
-                }, 300); // Change the opacity after 500 milliseconds
-            };
-        };
+const changeImage = () => {
+    currentImageIndex = (currentImageIndex + 1) % images.length;
+    const newImage = new Image();
+    newImage.src = images[currentImageIndex];
+    newImage.onload = () => {
+        imageElement.style.opacity = 0;
+        setTimeout(() => {
+            imageElement.src = newImage.src;
+            imageElement.style.opacity = 1;
+        }, 300); // Change the opacity after 500 milliseconds
+    };
+};
 
-        setInterval(changeImage, 3000); // Change image every 5 seconds (5000 milliseconds)
+setInterval(changeImage, 3000); // Change image every 5 seconds (5000 milliseconds)
 
-        const canvases = document.querySelectorAll('.scratch-canvas');
-        const scratchOverlays = document.querySelectorAll('.scratch-overlay');
-        const winPopup = document.getElementById('win-popup');
-        let scratchedCount = 0;
+const canvases = document.querySelectorAll('.scratch-canvas');
+const scratchOverlays = document.querySelectorAll('.scratch-overlay');
+const winPopup = document.getElementById('win-popup');
 
-        const scratchArea = (canvas, overlay) => {
+
+const scratchArea = (canvas, overlay) => {
             const ctx = canvas.getContext('2d');
             ctx.fillStyle = '#888'; // Color to indicate scratched area
             ctx.fillRect(0, 0, 800, 800);
@@ -235,7 +236,7 @@
 
                 if (scratchedPercentage >= 65) {
                     winPopup.style.display = 'block';
-                }
+                } 
             };
 
             const scratchEnd = () => {
