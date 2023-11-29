@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scratch Card</title>
+    <title>Meninový haviak</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
           rel="stylesheet" />
@@ -119,6 +119,20 @@
                      }
         }
 
+        #win-popup{
+            text-align: center;
+            position: fixed;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 100px;
+            border-radius: 10px;
+            font-family: "Poppins", sans-serif;
+            /* font-weight: 600; */
+            font-size: 1.5em;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px;
+        }
     </style>
 </head>
 <body>
@@ -128,7 +142,7 @@
     </div>
     <div class="container">
         <div class="img">
-            <img id="image" src="img/IMG_4376.jpg" alt="An Example Image">
+            <img id="image" src="img/IMG_4393.jpg" alt="wannabe pic of us">
         </div>
         <div class="base">
             <div class="scratch-card">
@@ -154,9 +168,9 @@
         </div>
     </div>
 
-    <div id="win-popup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);">
+    <div id="win-popup" >
         <h2>Blahoželám ti!</h2>
-        <p>Vyhral si wellness !</p>
+        <p>Vyhral si 120 min. vstup do Wellness PARADiSE v Žiline pre 2 osoby.<br><i>Voucher môžeš využiť len raz do 29.4.2024.</i></p>
     </div>
     <!-- Script -->
     <script>
@@ -177,11 +191,11 @@
                 setTimeout(() => {
                     imageElement.src = newImage.src;
                     imageElement.style.opacity = 1;
-                }, 500); // Change the opacity after 500 milliseconds
+                }, 300); // Change the opacity after 500 milliseconds
             };
         };
 
-        setInterval(changeImage, 2000); // Change image every 5 seconds (5000 milliseconds)
+        setInterval(changeImage, 3000); // Change image every 5 seconds (5000 milliseconds)
 
         const canvases = document.querySelectorAll('.scratch-canvas');
         const scratchOverlays = document.querySelectorAll('.scratch-overlay');
@@ -219,7 +233,7 @@
                 const transparentPixels = Array.from(imageData.data).filter((value, index) => (index + 1) % 4 === 0 && value === 0).length;
                 const scratchedPercentage = (transparentPixels / totalPixels) * 100;
 
-                if (scratchedPercentage >= 95) {
+                if (scratchedPercentage >= 65) {
                     winPopup.style.display = 'block';
                 }
             };
